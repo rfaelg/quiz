@@ -1,16 +1,15 @@
 /*fundo*/
+*{
+  box-sizing: border-box;
+}
 
 body {
   background-color: rgb(173, 216, 230);
   margin: none;
   padding: none;
   padding: 20px;
-  box-sizing: border-box;
   font-family: Arial, sans-serif;
 }
-
-
-
 
 /*estruturas principais*/
 
