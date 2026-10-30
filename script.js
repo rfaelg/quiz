@@ -76,13 +76,50 @@ let questao = 0
 function perguntar() {
   //pega o elemento pergunta 
   const encontrar_pergunta = document.getElementById("pergunta");
+  //variavel de controle do tempo
+  let tick;
+
   //troca o texto 
   encontrar_pergunta.innerText = questoes[questao].pergunta;
   //encontra os botões 
   const botoes = document.querySelectorAll(".botao");
+  //altera a questão 
+  function alterar_quest() {
+    const contador = document.getElementById('quest');
+    let atual = questao + 1;
+    contador.innerText = atual + "/" + questoes.length;
+    //inicializa o tempo
+    clearInterval(tick);
+    tempo();
+  };
+  alterar_quest();
+  //tempo
+
+function tempo() {
+    clearInterval(tick);
+    let tempo_r = 30;
+    
+    // Atualiza o visual logo no início para não começar em branco
+    const cronom = document.getElementById('tempo');
+    if (cronom) cronom.innerText = tempo_r;
+
+    tick = setInterval(() => {
+      tempo_r--;
+      
+      if (cronom) {
+          cronom.innerText = tempo_r;
+      }
+
+      if (tempo_r <= 0) {
+        clearInterval(tick);
+        // Aqui você pode colocar o que acontece quando o tempo acaba
+      }
+    }, 1000); // <--- Fechamento correto do setInterval aqui!
+}
+
   //altera os botões para a sua respectiva opção 
   alterar_botoes(botoes);
-}
+  };
 function alterar_botoes(botoes) {
   botoes[0].innerText = questoes[questao].opcoes[0]
   botoes[1].innerText = questoes[questao].opcoes[1]
@@ -130,7 +167,6 @@ function proxima_questao() {
 localStorage.setItem('totalA',acerto);
 localStorage.setItem('totalE',erro);
 window.location.href = "fim.html";
-
 
   }
 }
