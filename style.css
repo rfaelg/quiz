@@ -1,0 +1,54 @@
+:root{
+  --azul: #0065C6;
+  --verde: #00EF2A;
+  --vermelho: #E00044;
+  --cinza: #ACB6C9;
+  --fosco: #343958;
+}
+*{
+  margin: none;
+  padding: none;
+  border-style: none;
+}
+html, body{
+  width: 98vw;
+  height: 98vh;
+}
+body{
+  background-color: black;
+}
+main{
+  background-color: var(--fosco);
+  color: var(--cinza);
+  position: relative;
+  padding: 10px;
+  margin: 0px 10px 10px 0px;
+  border-radius: 10px;
+}
+button{
+  background-color: black;
+  color: var(--azul);
+  padding: 5px;
+  margin: 5px;
+  display: block;
+  border-radius: 5px;
+  transition: 1s;
+}
+button:hover{
+  border-style: dashed;
+  border-color: var(--azul);
+  transition: 1s;
+}
+h1{
+  display: inline;
+}
+#tempo{
+  background-color: var(--azul);
+  font-size: 1.1em;
+  margin: 10px;
+  padding: 2px 5px ;
+  border-radius: 3px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}

@@ -84,7 +84,11 @@ const questoes = [
 ];
 //variável guardando, o número da questão.
 let questao = 0
+//controle do tempo
 let tick;
+//[extra] áudios 
+const correto = new Audio("correto.mp3");
+const errado = new Audio("errado.mp3");
 const aread = document.getElementById('dica');
       aread.style.display = 'none';
 function perguntar() {
@@ -129,6 +133,10 @@ function tempo() {
       if (tempo_r <= 0) {
         clearInterval(tick);
         erro++
+        tocar_errado();
+        setTimeout(() =>{
+          proxima_questao();
+        }, 1000);
       }
       if (tempo_r === 15) {
         mostrar_dica();
@@ -147,9 +155,7 @@ function alterar_botoes(botoes) {
 perguntar();
 //definindo a resposta correta 
 const resposta_certa = questoes[questao].certa;
-//[extra] áudios 
-const correto = new Audio("correto.mp3");
-const errado = new Audio("errado.mp3");
+
 function tocar_errado() {
   errado.currentTime = 0;
   errado.play();
