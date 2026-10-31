@@ -27,57 +27,70 @@ console.group("%c Creditos","font-size: 1.3em;");
 const questoes = [
   {
     pergunta: "1. O que é o Sistema Nervoso?",
-    opcoes: ["O sistema que transporta sangue e nutrientes pelo corpo.","O sistema que coordena as ações do corpo e transmite sinais pelo organismo","O sistema que digere os alimentos e absorve os nutrientes."],
+    opcoes: ["O sistema que transporta sangue e nutrientes pelo corpo.",
+    "O sistema que coordena as ações do corpo e transmite sinais pelo organismo",
+    "O sistema que digere os alimentos e absorve os nutrientes."],
+    dica: "essa é uma dica1",
     certa: 1 ,
   },
   {
     pergunta: "2 qual é a principal célula do sistema nervoso?",
     opcoes: ["Neurônio","Glóbulo Vermelho","Célula do Sangue"],
+    dica: "essa é uma dica2",
     certa: 0 ,
   },
   {
     pergunta: "3. Qual é a função dos nervos?",
     opcoes: ["Bombear o sangue","Levar mensagens entre o corpo e o cérebro","Digerir os alimentos"],
+    dica: "essa é uma dica3",
     certa: 1 ,
   },
   {
     pergunta: "4. Quais são as partes do Sistema Nervoso Central?",
     opcoes: ["Pulmões e Nariz","Coração e Artérias","Cérebro e Medula Espinhal"],
+    dica: "essa é uma dica4",
     certa: 2,
   },
   {
     pergunta: "5. O que protege o cérebro?",
     opcoes: ["O Crânio","A coluna","As costelas"],
+    dica: "essa é uma dica5",
     certa: 0 ,
   },
   {
     pergunta: "6. O que é o ato reflexo?",
     opcoes: ["Movimento lebto e planejado","Comando do coração","Reação rápida sem pensar"],
+    dica: "essa é uma dica6",
     certa: 2 ,
   },
   {
     pergunta: "7. Qual parte controla o equilíbrio?",
     opcoes: ["Cerebelo","Estômago","Coração"],
+    dica: "essa é uma dica7",
     certa: 0 ,
   },
   {
     pergunta: "8. O que a Medula Espinhal faz?",
     opcoes: ["Digere os alimentos","Produz sangue novo","Liga o Cérebro ao resto do corpo"],
+    dica: "essa é uma dica8",
     certa: 2 ,
   },
   {
     pergunta: "9. Como se protege o Sistema Nervoso?",
     opcoes: ["Não bebendo água","Dormindo bem, e protegendo a cabeça","Comendo só doce"],
+    dica: "essa é uma dica9",
     certa: 1,
   }
 ];
 //variável guardando, o número da questão.
 let questao = 0
+let tick;
+const aread = document.getElementById('dica');
+      aread.style.display = 'none';
 function perguntar() {
   //pega o elemento pergunta 
   const encontrar_pergunta = document.getElementById("pergunta");
-  //variavel de controle do tempo
-  let tick;
+  //variavel de controle do 
 
   //troca o texto 
   encontrar_pergunta.innerText = questoes[questao].pergunta;
@@ -93,12 +106,15 @@ function perguntar() {
     tempo();
   };
   alterar_quest();
+  //dica
+  function mostrar_dica() {
+    aread.innerText = questoes[questao].dica;
+    aread.style.display = 'block';
+  };
   //tempo
-
 function tempo() {
     clearInterval(tick);
     let tempo_r = 30;
-    
     // Atualiza o visual logo no início para não começar em branco
     const cronom = document.getElementById('tempo');
     if (cronom) cronom.innerText = tempo_r;
@@ -112,7 +128,10 @@ function tempo() {
 
       if (tempo_r <= 0) {
         clearInterval(tick);
-        // Aqui você pode colocar o que acontece quando o tempo acaba
+        erro++
+      }
+      if (tempo_r === 15) {
+        mostrar_dica();
       }
     }, 1000); // <--- Fechamento correto do setInterval aqui!
 }
@@ -159,6 +178,7 @@ let erro = 0
 
 function proxima_questao() {
   questao++;
+  aread.style.display = 'none';
   if (questao < questoes.length) {
     perguntar();
   } else {
