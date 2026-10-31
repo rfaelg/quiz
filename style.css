@@ -11,13 +11,13 @@
   border-style: none;
 }
 html, body{
-  width: 98vw;
-  height: 98vh;
+  width: 100%;
+  height: 100%;
 }
 body{
   background-color: black;
 }
-main{
+main, header{
   background-color: var(--fosco);
   color: var(--cinza);
   position: relative;
@@ -28,6 +28,7 @@ main{
 button{
   background-color: black;
   color: var(--azul);
+  font-size: 1.1em;
   padding: 5px;
   margin: 5px;
   display: block;
@@ -44,11 +45,20 @@ h1{
 }
 #tempo{
   background-color: var(--azul);
-  font-size: 1.1em;
+  font-size: 1.2em;
   margin: 10px;
   padding: 2px 5px ;
   border-radius: 3px;
+}
+#quest{
+  margin: 10px;
+  font-size: 1.2em;
+}
+#alinhar{
+  margin: 10px;
   position: absolute;
   top: 0;
   right: 0;
+  display: flex;
+  align-items: center;
 }

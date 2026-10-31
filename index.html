@@ -9,10 +9,16 @@
 </head>
 <!--a partir daqui, vc vai pegar as tags para estilizar-->
 <body>
-  <main><!--estrutura principal, onde vai se concentrar tudo.-->
+  <header id="inicio">
+    <h1>Quiz do Sistema Nervoso</h1>
+    <button type="submit" id="iniciar" onclick="iniciar()">iniciar</button>
+  </header>
+  <main id="princ"><!--estrutura principal, onde vai se concentrar tudo.-->
   <h1>Quiz &#129504</h1>
-  <span id="quest">questão</span>
-  <span id="tempo">30</span>
+  <span id="alinhar">
+    <span id="quest">questão</span>
+    <span id="tempo">30</span>
+  </span>
   <section><!-- área onde vai ficar a pergunta e as respostas -->
     <h2 id="pergunta">Sua Pergunta aqui</h2>
     <!--area da dica-->

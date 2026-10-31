@@ -89,13 +89,23 @@ let tick;
 //[extra] áudios 
 const correto = new Audio("correto.mp3");
 const errado = new Audio("errado.mp3");
+const relogio = new Audio("relogio.mp3")
+//dica
 const aread = document.getElementById('dica');
-      aread.style.display = 'none';
+//header e main
+const header = document.getElementById('inicio');
+const main = document.getElementById('princ');
+//configurações 
+main.style.display = 'none';
+aread.style.display = 'none';
+//iniciar 
+function iniciar() {
+  header.style.display = 'none';
+  main.style.display = 'block'
+};
 function perguntar() {
   //pega o elemento pergunta 
   const encontrar_pergunta = document.getElementById("pergunta");
-  //variavel de controle do 
-
   //troca o texto 
   encontrar_pergunta.innerText = questoes[questao].pergunta;
   //encontra os botões 
@@ -125,7 +135,7 @@ function tempo() {
 
     tick = setInterval(() => {
       tempo_r--;
-      
+      tocar_relogio();
       if (cronom) {
           cronom.innerText = tempo_r;
       }
@@ -163,6 +173,9 @@ function tocar_errado() {
 function tocar_certo() {
   correto.currentTime = 0;
   correto.play();
+}
+function tocar_relogio() {
+  relogio.play();
 }
 //declarando acertos e erros 
 let acerto = 0
