@@ -30,55 +30,55 @@ const questoes = [
     opcoes: ["O sistema que transporta sangue e nutrientes pelo corpo.",
     "O sistema que coordena as ações do corpo e transmite sinais pelo organismo",
     "O sistema que digere os alimentos e absorve os nutrientes."],
-    dica: "essa é uma dica1",
+    dica: "esse sistema é tipo uma 'rede elétrica', só que do corpo humano!",
     certa: 1 ,
   },
   {
     pergunta: "2 qual é a principal célula do sistema nervoso?",
     opcoes: ["Neurônio","Glóbulo Vermelho","Célula do Sangue"],
-    dica: "essa é uma dica2",
+    dica: "fica no cérebro, e tem um corpo alongado",
     certa: 0 ,
   },
   {
     pergunta: "3. Qual é a função dos nervos?",
     opcoes: ["Bombear o sangue","Levar mensagens entre o corpo e o cérebro","Digerir os alimentos"],
-    dica: "essa é uma dica3",
+    dica: "é como se fosse a função de um carteiro…",
     certa: 1 ,
   },
   {
     pergunta: "4. Quais são as partes do Sistema Nervoso Central?",
     opcoes: ["Pulmões e Nariz","Coração e Artérias","Cérebro e Medula Espinhal"],
-    dica: "essa é uma dica4",
+    dica: "o órgão do pensamento, e um cabo cheio de espinhos!",
     certa: 2,
   },
   {
     pergunta: "5. O que protege o cérebro?",
     opcoes: ["O Crânio","A coluna","As costelas"],
-    dica: "essa é uma dica5",
+    dica: "osso da cabeça…",
     certa: 0 ,
   },
   {
     pergunta: "6. O que é o ato reflexo?",
     opcoes: ["Movimento lebto e planejado","Comando do coração","Reação rápida sem pensar"],
-    dica: "essa é uma dica6",
+    dica: "nem dá tempo de pensar!",
     certa: 2 ,
   },
   {
     pergunta: "7. Qual parte controla o equilíbrio?",
     opcoes: ["Cerebelo","Estômago","Coração"],
-    dica: "essa é uma dica7",
+    dica: "parece com cérebro!",
     certa: 0 ,
   },
   {
     pergunta: "8. O que a Medula Espinhal faz?",
     opcoes: ["Digere os alimentos","Produz sangue novo","Liga o Cérebro ao resto do corpo"],
-    dica: "essa é uma dica8",
+    dica: "é quase como se fosse um fio…",
     certa: 2 ,
   },
   {
     pergunta: "9. Como se protege o Sistema Nervoso?",
     opcoes: ["Não bebendo água","Dormindo bem, e protegendo a cabeça","Comendo só doce"],
-    dica: "essa é uma dica9",
+    dica: "bons sonhos…",
     certa: 1,
   }
 ];
@@ -148,10 +148,8 @@ function tempo() {
         clearInterval(tick);
         erro++
         dicaS.currentTime = 0;
+        fimS.currentTime = 3;
         fimS.play();
-        setTimeout(() => {
-          fimS.pause();
-        }, 1000);
         main.style.boxShadow = '0px 0px 10px 5px var(--vermelho)';
         mostrarMensagem('tempo');
         mudar_classe();
