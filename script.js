@@ -107,6 +107,7 @@ function iniciar() {
   main.style.display = 'block';
   perguntar();
 };
+
 function perguntar() {
   //pega o elemento pergunta 
   const encontrar_pergunta = document.getElementById("pergunta");
