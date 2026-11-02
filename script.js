@@ -93,6 +93,7 @@ const correto = new Audio("correto.mp3");
 const errado = new Audio("errado.mp3");
 const relogio = new Audio("relogio.mp3");
 const dicaS = new Audio("tempo.mp3");
+const fimS = new Audio("fimt.mp3")
 //dica
 const aread = document.getElementById('dica');
 //header e main
@@ -147,9 +148,9 @@ function tempo() {
         clearInterval(tick);
         erro++
         dicaS.currentTime = 0;
-        dicaS.play();
+        fimS.play();
         setTimeout(() => {
-          dicaS.pause();
+          fimS.pause();
         }, 1000);
         main.style.boxShadow = '0px 0px 10px 5px var(--vermelho)';
         mostrarMensagem('tempo');
@@ -208,7 +209,7 @@ function tocar_errado() {
   errado.play();
 };
 function tocar_certo() {
-  correto.currentTime = 0;
+  correto.currentTime = 1;
   correto.play();
 };
 function tocar_relogio() {
