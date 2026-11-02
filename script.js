@@ -239,7 +239,7 @@ function proxima_questao() {
   if (questao < questoes.length) {
     perguntar();
   } else {
-    console.log(acerto,erro)
+    console.log(acerto,erro);
     setTimeout(() => {
 localStorage.setItem('totalA',acerto);
 localStorage.setItem('totalE',erro);
