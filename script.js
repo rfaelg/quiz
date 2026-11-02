@@ -86,6 +86,8 @@ const questoes = [
 let questao = 0
 //controle do tempo
 let tick;
+//botoes
+const botoes = document.querySelectorAll(".botao");
 //[extra] áudios 
 const correto = new Audio("correto.mp3");
 const errado = new Audio("errado.mp3");
@@ -111,7 +113,6 @@ function perguntar() {
   //troca o texto 
   encontrar_pergunta.innerText = questoes[questao].pergunta;
   //encontra os botões 
-  const botoes = document.querySelectorAll(".botao");
   //altera a questão 
   function alterar_quest() {
     const contador = document.getElementById('quest');
@@ -124,7 +125,7 @@ function perguntar() {
   alterar_quest();
   //dica
   function mostrar_dica() {
-    aread.innerText = questoes[questao].dica;
+    aread.innerText = "💡" + questoes[questao].dica;
     aread.style.display = 'block';
   };
   //tempo
@@ -149,6 +150,11 @@ function tempo() {
         setTimeout(() => {
           dicaS.pause();
         }, 1000);
+        mostrarMensagem('tempo');
+        mudar_classe();
+        setTimeout(() => {
+          voltar_classe();
+        }, 2000);
         setTimeout(() =>{
           proxima_questao();
         }, 1000);
@@ -174,9 +180,25 @@ function alterar_botoes(botoes) {
   botoes[2].innerText = questoes[questao].opcoes[2]
 }
 
-//definindo a resposta correta 
-const resposta_certa = questoes[questao].certa;
 
+//definindo a resposta correta 
+
+function mudar_classe() {
+  botoes.forEach(botao => {
+    botao.classList.remove('opc-c','opc-e','neutro');
+    botao.classList.add('opc-e');
+    }
+  );
+  const resposta_certa = questoes[questao].certa;
+  botoes[resposta_certa].classList.add('opc-c');
+};
+function voltar_classe() {
+  botoes.forEach(botao => {
+    botao.classList.remove('opc-c','opc-e');
+    botao.classList.add('neutro');
+    }
+  );
+}
 function tocar_errado() {
   errado.currentTime = 0;
   errado.play();
@@ -193,16 +215,20 @@ let acerto = 0
 let erro = 0
 //verificando se tá certo
  function checar_resposta(opcao_escolhida) {
+   mudar_classe();
   if (opcao_escolhida === questoes[questao].certa) {
     tocar_certo();
     acerto++
-    mostrarMensagem('🎉 Parabéns! Correto!', '#27ae60');
+    mostrarMensagem('correto');
   } else {
     tocar_errado();
     erro++
-    mostrarMensagem('😯 Ops! Tente de novo!', '#e74c3c');
+    mostrarMensagem('errado');
   }
-  proxima_questao();
+  setTimeout(() =>{
+    proxima_questao();
+    voltar_classe();
+  }, 2000);
 }
  
 
@@ -213,29 +239,33 @@ function proxima_questao() {
     perguntar();
   } else {
     console.log(acerto,erro)
-    //transferindo os dados de acerto e erro
+    setTimeout(() => {
 localStorage.setItem('totalA',acerto);
 localStorage.setItem('totalE',erro);
 window.location.href = "fim.html";
-
+}, 1000)
   }
 }
 
 //mostrar mensagem de acerto e erro
 
-function mostrarMensagem(texto, cor) {
+function mostrarMensagem(resul) {
   const msg = document.getElementById('msg');
-  msg.textContent = texto;
+  msg.classList.remove('msg-c','msg-e','msg-t');
+  if (resul === 'correto') {
+    msg.classList.add('msg-c');
+    msg.innerText = 'resposta correta! parabéns!';
+  };
+  if (resul === 'errado') {
+    msg.classList.add('msg-e');
+    msg.innerText = 'resposta icorreta, valeu a tentativa!';
+  };
+  if (resul === 'tempo') {
+    msg.classList.add('msg-t');
+    msg.innerText = 'Acabou o tempo!';
+  };
   msg.style.display = 'block';
-  msg.style.backgroundColor = cor;
-  msg.style.color = 'white';
-  msg.style.padding = '12px';
-  msg.style.borderRadius = '8px';
-  msg.style.textAlign = 'center';
-  msg.style.fontSize = '20px';
-  msg.style.fontWeight = 'bold';
-  msg.style.marginTop = '20px';
-  setTimeout(() => {
+  setTimeout(() =>{
     msg.style.display = 'none';
-  }, 2500);
-}
+  }, 2000);
+};

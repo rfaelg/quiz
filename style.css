@@ -6,8 +6,6 @@
   --fosco: #343958;
 }
 *{
-  margin: none;
-  padding: none;
   border-style: none;
 }
 html, body{
@@ -16,6 +14,10 @@ html, body{
 }
 body{
   background-color: black;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 main, header{
   background-color: var(--fosco);
@@ -25,6 +27,9 @@ main, header{
   margin: 0px 10px 10px 0px;
   border-radius: 10px;
   box-shadow: 0px 0px 10px 5px var(--azul);
+  min-width: 350px;
+  width: 90vw;
+  max-width: 1000px;
 }
 button{
   background-color: black;
@@ -39,7 +44,6 @@ button{
 button:hover{
   border-style: dashed;
   border-color: var(--azul);
-  transition: 1s;
 }
 h1{
   display: inline;
@@ -62,4 +66,46 @@ h1{
   right: 0;
   display: flex;
   align-items: center;
+}
+.opc-e{
+  color: var(--vermelho);
+  border-style: solid;
+  border-color: var(--vermelho);
+}
+.opc-c{
+  color: var(--verde);
+  border-style: solid;
+  border-color: var(--verde);
+}
+.neutro{
+  background-color: black;
+}
+.msg-c{
+  background-color: black;
+  border-style: solid;
+  border-width: 3px;
+  border-color: var(--verde);
+  color: var(--verde);
+}
+.msg-e{
+  background-color: black;
+  border-style: solid;
+  border-width: 3px;
+  border-color: var(--vermelho);
+  color: var(--vermelho);
+}
+.msg-t{
+  background-color: black;
+  border-style: solid;
+  border-width: 3px;
+  border-color: var(--vermelho);
+  color: var(--vermelho);
+}
+#dica{
+  background-color: black;
+  border-style: solid;
+  border-color: #FFE100;
+  color: #FFE100;
+  padding: 10px;
+  border-radius: 10px;
 }
