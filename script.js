@@ -89,7 +89,8 @@ let tick;
 //[extra] áudios 
 const correto = new Audio("correto.mp3");
 const errado = new Audio("errado.mp3");
-const relogio = new Audio("relogio.mp3")
+const relogio = new Audio("relogio.mp3");
+const dicaS = new Audio("tempo.mp3");
 //dica
 const aread = document.getElementById('dica');
 //header e main
@@ -101,7 +102,8 @@ aread.style.display = 'none';
 //iniciar 
 function iniciar() {
   header.style.display = 'none';
-  main.style.display = 'block'
+  main.style.display = 'block';
+  perguntar();
 };
 function perguntar() {
   //pega o elemento pergunta 
@@ -132,25 +134,34 @@ function tempo() {
     // Atualiza o visual logo no início para não começar em branco
     const cronom = document.getElementById('tempo');
     if (cronom) cronom.innerText = tempo_r;
-
     tick = setInterval(() => {
       tempo_r--;
-      tocar_relogio();
       if (cronom) {
           cronom.innerText = tempo_r;
       }
+      tocar_relogio();
 
       if (tempo_r <= 0) {
         clearInterval(tick);
         erro++
-        tocar_errado();
+        dicaS.currentTime = 0;
+        dicaS.play();
+        setTimeout(() => {
+          dicaS.pause();
+        }, 1000);
         setTimeout(() =>{
           proxima_questao();
         }, 1000);
-      }
+      };
       if (tempo_r === 15) {
         mostrar_dica();
-      }
+        relogio.pause();
+        dicaS.currentTime = 0;
+        dicaS.play();
+  setTimeout(() => {
+    dicaS.pause();
+  }, 1000);
+      };
     }, 1000); // <--- Fechamento correto do setInterval aqui!
 }
 
@@ -162,21 +173,21 @@ function alterar_botoes(botoes) {
   botoes[1].innerText = questoes[questao].opcoes[1]
   botoes[2].innerText = questoes[questao].opcoes[2]
 }
-perguntar();
+
 //definindo a resposta correta 
 const resposta_certa = questoes[questao].certa;
 
 function tocar_errado() {
   errado.currentTime = 0;
   errado.play();
-}
+};
 function tocar_certo() {
   correto.currentTime = 0;
   correto.play();
-}
+};
 function tocar_relogio() {
   relogio.play();
-}
+};
 //declarando acertos e erros 
 let acerto = 0
 let erro = 0
