@@ -150,7 +150,7 @@ function tempo() {
         dicaS.currentTime = 0;
         fimS.currentTime = 3;
         fimS.play();
-        main.style.boxShadow = '0px 0px 10px 5px var(--vermelho)';
+        main.style.boxShadow = '0px 0px 20px 10px var(--vermelho)';
         mostrarMensagem('tempo');
         mudar_classe();
         setTimeout(() => {
@@ -161,7 +161,7 @@ function tempo() {
         }, 1000);
       };
       if (tempo_r === 15) {
-        main.style.boxShadow = '0px 0px 10px 5px #FFE100';
+        main.style.boxShadow = '0px 0px 20px 10px #FFE100';
         mostrar_dica();
         relogio.pause();
         dicaS.currentTime = 0;
@@ -200,7 +200,7 @@ function voltar_classe() {
     botao.classList.add('neutro');
     }
   );
-  main.style.boxShadow = '0px 0px 10px 5px var(--azul)';
+  main.style.boxShadow = '0px 0px 20px 10px var(--azul)';
 };
 function tocar_errado() {
   errado.currentTime = 0;
@@ -220,12 +220,12 @@ let erro = 0
  function checar_resposta(opcao_escolhida) {
    mudar_classe();
   if (opcao_escolhida === questoes[questao].certa) {
-    main.style.boxShadow = '0px 0px 10px 5px var(--verde)';
+    main.style.boxShadow = '0px 0px 20px 10px var(--verde)';
     tocar_certo();
     acerto++
     mostrarMensagem('correto');
   } else {
-    main.style.boxShadow = '0px 0px 10px 5px var(--vermelho)';
+    main.style.boxShadow = '0px 0px 20px 10px var(--vermelho)';
     tocar_errado();
     erro++
     mostrarMensagem('errado');
