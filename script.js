@@ -99,6 +99,8 @@ const aread = document.getElementById('dica');
 //header e main
 const header = document.getElementById('inicio');
 const main = document.getElementById('princ');
+//cronômetro 
+const cronom = document.getElementById('tempo');
 //configurações 
 main.style.display = 'none';
 aread.style.display = 'none';
@@ -135,7 +137,6 @@ function tempo() {
     clearInterval(tick);
     let tempo_r = 30;
     // Atualiza o visual logo no início para não começar em branco
-    const cronom = document.getElementById('tempo');
     if (cronom) cronom.innerText = tempo_r;
     tick = setInterval(() => {
       tempo_r--;
@@ -151,6 +152,8 @@ function tempo() {
         fimS.currentTime = 3;
         fimS.play();
         main.style.boxShadow = '0px 0px 20px 10px var(--vermelho)';
+        cronom.style.backgroundColor = 'var(--vermelho)';
+        cronom.style.color = 'var(--cinza)';
         mostrarMensagem('tempo');
         mudar_classe();
         setTimeout(() => {
@@ -162,6 +165,8 @@ function tempo() {
       };
       if (tempo_r === 15) {
         main.style.boxShadow = '0px 0px 20px 10px #FFE100';
+        cronom.style.backgroundColor = '#FFE100';
+        cronom.style.color = 'black';
         mostrar_dica();
         relogio.pause();
         dicaS.currentTime = 0;
@@ -201,6 +206,8 @@ function voltar_classe() {
     }
   );
   main.style.boxShadow = '0px 0px 20px 10px var(--azul)';
+  cronom.style.backgroundColor = 'var(--azul)';
+  cronom.style.color = 'var(--cinza)';
 };
 function tocar_errado() {
   errado.currentTime = 0;
@@ -221,11 +228,15 @@ let erro = 0
    mudar_classe();
   if (opcao_escolhida === questoes[questao].certa) {
     main.style.boxShadow = '0px 0px 20px 10px var(--verde)';
+    cronom.style.backgroundColor = 'var(--verde)';
+    cronom.style.color = 'black';
     tocar_certo();
     acerto++
     mostrarMensagem('correto');
   } else {
     main.style.boxShadow = '0px 0px 20px 10px var(--vermelho)';
+    cronom.style.backgroundColor = 'var(--vermelho)';
+    cronom.style.color = 'var(--cinza)';
     tocar_errado();
     erro++
     mostrarMensagem('errado');
