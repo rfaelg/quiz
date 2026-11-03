@@ -146,7 +146,7 @@ h1{
 }
 .pi{
   color: white;
-  font-size: 2em;
+  font-size: 1.5em;
 }
 header > button{
   background-color: var(--azul);
